@@ -25,8 +25,14 @@ public class EventLog {
             throw new IllegalArgumentException();
         if (event.getName() == null || event.getAction() == null)
             throw new IllegalArgumentException();
-        System.out.printf("Event Added:\n" + event);
-        eventList.add(event);
-        return true;
+        if (event.getAction().equals("Face2Face") ||
+                event.getAction().equals("PhoneCall") ||
+                event.getAction().equals("TextMessaging") ||
+                event.getAction().equals("Unknown")) {
+            System.out.printf("Event Added:\n" + event);
+            eventList.add(event);
+            return true;
+        } else
+            throw new IllegalArgumentException();
     }
 }

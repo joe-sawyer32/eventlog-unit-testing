@@ -54,12 +54,22 @@ public class EventLogTest {
     }
 
     @Test
+    public void invalidActionVariableTest() throws IllegalArgumentException {
+        System.out.println("Attempting to add event with invalid action variable...");
+        testEvent = new Event();
+        testEvent.setName("Text");
+        testEvent.setAction("invalid action");
+        thrown.expect(IllegalArgumentException.class);
+        testEventLog.addEvent(testEvent);
+    }
+
+    @Test
     public void validEventAddedToEventListTest() throws IllegalArgumentException {
         System.out.println("Attempting to add valid event to event list...");
         testEvent = new Event();
         testEvent.setName("some test event name");
-        testEvent.setAction("some test event action");
-        testEventLog.addEvent(testEvent);
+        testEvent.setAction("TextMessaging");
+        assertTrue("Should return true", testEventLog.addEvent(testEvent));
         assertTrue("Should have been added to event list", testEventLog.getNumEvents() == 1);
         System.out.println("SUCCESS");
     }
