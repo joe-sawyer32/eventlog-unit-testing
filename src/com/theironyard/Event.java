@@ -24,4 +24,14 @@ public class Event {
     public void setAction(String action) {
         this.action = action;
     }
+
+    // custom
+
+    @Override
+    public String toString() {
+        return "\tEvent\n" +
+                "\t--------------------------\n" +
+                "\tName - '" + name + "'\n" +
+                "\tAction - '" + action + "'\n\n";
+    }
 }

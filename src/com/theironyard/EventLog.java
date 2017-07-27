@@ -1,5 +1,6 @@
 package com.theironyard;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,24 +8,25 @@ import java.util.List;
  */
 public class EventLog {
     // FIELDS
-    private List<Event> eventList;
+    private List<Event> eventList = new ArrayList<>();
 
     // CONSTRUCTORS
-    public EventLog () {}
+    public EventLog() {
+    }
 
     // METHODS
     // custom
-    public int getNumEvents () {
+    public int getNumEvents() {
         return eventList.size();
     }
 
-    public boolean addEvent (Event event) {
-        if(event == null) {
+    public boolean addEvent(Event event) {
+        if (event == null)
             throw new IllegalArgumentException();
-        }
-        if(event.getName() == null || event.getAction() == null) {
+        if (event.getName() == null || event.getAction() == null)
             throw new IllegalArgumentException();
-        }
+        System.out.printf("Event Added:\n" + event);
+        eventList.add(event);
         return true;
     }
 }

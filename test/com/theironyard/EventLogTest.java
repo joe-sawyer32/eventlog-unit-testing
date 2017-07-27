@@ -45,11 +45,22 @@ public class EventLogTest {
     }
 
     @Test
-    public void onEventVariableNullTest() throws IllegalArgumentException {
+    public void oneEventVariableNullTest() throws IllegalArgumentException {
         System.out.println("Attempting to add event with one null variable...");
         testEvent = new Event();
         testEvent.setName("some test event name");
         thrown.expect(IllegalArgumentException.class);
         testEventLog.addEvent(testEvent);
+    }
+
+    @Test
+    public void validEventAddedToEventListTest() throws IllegalArgumentException {
+        System.out.println("Attempting to add valid event to event list...");
+        testEvent = new Event();
+        testEvent.setName("some test event name");
+        testEvent.setAction("some test event action");
+        testEventLog.addEvent(testEvent);
+        assertTrue("Should have been added to event list", testEventLog.getNumEvents() == 1);
+        System.out.println("SUCCESS");
     }
 }
